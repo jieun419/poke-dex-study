@@ -1,10 +1,5 @@
 function App() {
-
-  return (
-    <>
-      얍!
-    </>
-  )
+  return <>얍!ㅇㅇㄹㄷㄷ</>
 }
 
 export default App
