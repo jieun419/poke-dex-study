@@ -1,5 +1,13 @@
+import Card from "./Card";
+import Nav from "./Nav"
+
 function App() {
-  return <>얍!ㅇㅇㄹㄷㄷ</>
+  return   <>
+  <section id="home-section">
+    <Nav/>
+    <Card/>
+  </section>
+  </>
 }
 
 export default App
