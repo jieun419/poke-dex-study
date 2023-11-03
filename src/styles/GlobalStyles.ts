@@ -18,6 +18,7 @@ const GlobalStyles = createGlobalStyle`
         border: 0;
         font-size: 10px;
         vertical-align: baseline;
+        font-size: 16px;
     }
     body{
         line-height: 1;

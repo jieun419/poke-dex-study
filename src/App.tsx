@@ -1,11 +1,49 @@
 import { useQuery } from "react-query"
 import axios from "axios"
 import { useState } from "react"
+import styled from "styled-components"
 
 interface PokeDataT {
   name: string,
   url: string,
 }
+
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const PokeInfoContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 50%;
+  padding: 10px;
+`
+
+const PokeInfoBox = styled.div`
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+`
+
+const PokeName = styled.p`
+  font-size: 0.8rem;
+  padding: 10px;
+`
+
+const PageNation = styled.div`
+  display: flex;
+  gap: 10px;
+  & > button {
+    background-color: #444;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: #fff;
+  }
+`
 
 function App() {
   const [pokeData, setPokeData] = useState<PokeDataT[]>([])
@@ -28,19 +66,23 @@ function App() {
   console.log(pokeData)
 
   return (
-    <>
-      <div>
+    <Main>
+      <PokeInfoContainer>
         {
           pokeData.map((el) => (
-            <div key={el.name}>
-              <p>
+            <PokeInfoBox key={el.name}>
+              <PokeName>
                 {el.name}
-              </p>
-            </div>
+              </PokeName>
+            </PokeInfoBox>
           ))
         }
-      </div>
-    </>
+      </PokeInfoContainer>
+      <PageNation>
+        <button>prev</button>
+        <button>next</button>
+      </PageNation>
+    </Main>
   )
 }
 
