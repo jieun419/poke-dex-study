@@ -20,7 +20,7 @@ function Pagination() {
 
   const PageNumber = styled.button`
     display: flex;
-    background-color: red;
+    background-color: #ff675c;
     height: 40px;
     width: 70px;
     border-radius: 20px;

@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 
-export function Call() {
+function Call() {
     const {isLoading, error, data} = useQuery({
       queryKey: ['pokemonData'],
       queryFn: () => 
@@ -19,3 +19,4 @@ export function Call() {
     )
   }
   
+  export default Call;

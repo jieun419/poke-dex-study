@@ -1,15 +1,10 @@
 import styled from "styled-components";
 import { BsSearch } from 'react-icons/bs';
-import { FaHome } from 'react-icons/fa';
+
 function Nav() {
     return   <MenuNav>   
       <h1>Pokemon Dictionary</h1>   
       <div>
-          <ul>
-            <li><FaHome/></li>
-            <li>포켓몬 전체보기</li>
-            <li>북마크</li>
-          </ul>
           <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
               <FilterArea>
                     <ul>
@@ -37,7 +32,7 @@ function Nav() {
   export default Nav;
 
   const MenuNav = styled.section`
-  background-color: #fff;
+  background-color: #ffefef;
   text-align: center;
   display: flex;
   justify-content: space-between;
