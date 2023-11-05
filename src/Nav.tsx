@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import { BsSearch } from 'react-icons/bs';
 import { FaHome } from 'react-icons/fa';
-
 function Nav() {
     return   <MenuNav>   
-      <h1>Poke-mon Dictionary</h1>   
+      <h1>Pokemon Dictionary</h1>   
       <div>
           <ul>
             <li><FaHome/></li>
@@ -16,13 +15,20 @@ function Nav() {
                     <ul>
                         <li>가나다순</li>
                         <li>번호순</li>
+                        <li>랜덤</li>
                     </ul>
               </FilterArea>
               <InputArea>
                 <input type="text" id="search-box" placeholder="여기에 검색하세요" ></input>
                 <BsSearch style={{fontSize:"30px", backgroundColor:"red"}}/>
               </InputArea>
-              <div><span style={{fontSize:"16px", textAlign:"center"}}>10개씩 보기</span></div>
+              <div>
+              <select style={{fontSize:"16px", textAlign:"center", marginLeft:"20px", height:"30px", borderRadius:"5px", cursor:"pointer"}}>
+                <option value="10">10개씩 보기</option>
+                <option value="20">20개씩 보기</option>
+                <option value="30">30개씩 보기</option>
+              </select>
+              </div>
           </div>
       </div>
     </MenuNav>
@@ -61,12 +67,13 @@ const InputArea = styled.section`
     padding: 10px 0;
     input {
         width: 400px;
-        height: 3cap;
+        height: 35px;
         border-radius: 10px;
         font-size: 16px;
         padding: 0 10px;
         display: flex;
         margin: 0 10px;
+        border: 3px solid gray;
     }
 `;
 const FilterArea = styled.section`
