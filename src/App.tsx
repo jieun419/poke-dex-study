@@ -1,12 +1,14 @@
 import Card from "./Card";
 import Nav from "./Nav"
 import styled from "styled-components";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { QueryClient, QueryClientProvider} from "react-query";
+import { Call } from "./Call";
+import Pagination from "./Pagination";
 
-
+const queryClient = new QueryClient();
 function App() {
-  return   <>
-  <section id="home-section">
+  return <QueryClientProvider client={queryClient}>
+  <section id="home-section">    
     <Nav/>
     <CardListSection>
       <Card/>
@@ -15,10 +17,13 @@ function App() {
       <Card/>
       <Card/>
       <Card/>
+      <Call/>
     </CardListSection>
+    <Pagination/>
   </section>
-  </>
+  </QueryClientProvider>
 }
+
 
 export default App;
 
@@ -28,3 +33,4 @@ const CardListSection = styled.section`
   display: flex;
   justify-content: space-between;
 `;
+
