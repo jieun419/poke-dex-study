@@ -15,7 +15,7 @@ function Pagination() {
 
   const PaginationSection = styled.section`
   width: 100%;
-  background-color: ghostwhite;
+  background-color: #f3f4f2;
   display: flex;
   justify-content: center;
   position: absolute;

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 interface PokeData {
     poketId: number;
     key: number;
@@ -8,12 +7,15 @@ interface PokeData {
   }
 
 function Card({poketId, name, key, url}: PokeData): JSX.Element {
-    //왜 포켓몬 image주소가 없을까요?...일단 다른 사이트에서 랜덤 이미지로 넣어보긴 했는데...
+    //key를 어떻게 처리할 것인지에 대한 고민이 많음.....
+    //key를 그대로 쓰지 못하는 이유: react에서 이미 key를 다른 용도로 쓰고 있어서 써봤자 안나타남
     return   <>    
     <CardSection>
-        //<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${poketId}.png`} alt='pokemon-img'/>
+        {/*여기 이미지 주소가 존재하는가??? 새로 만들어야 한다면 offset반영될 때 id가 바뀌어야 됨...*/}
+        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${poketId+1}.png`} alt='pokemon-img'/>
+        {/*https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/2.gif 이쪽도 참고*/}
         <h2 id="pokemon-name">{name}</h2>
-        <p>#0033</p>
+        <p>#{poketId}</p>
         <div style={{display:"flex", justifyContent:"space-between"}}>            
             <SkillBtn>Fire</SkillBtn>
             <SkillBtn>Water</SkillBtn>            
@@ -40,13 +42,13 @@ const CardSection = styled.section`
   img {
     width: 100%;
     height: 65%;
-    border: 1px solid black;
+    border: 1px solid #535353;
     border-radius: 5px;
   }
   h2 {
     font-weight: 800;
     font-size: 22px;
-    padding: 1rem 0 0.4rem 0;
+    padding: 1rem 0 0.5rem 0;
     text-align: center;
   }
    p {
