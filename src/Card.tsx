@@ -1,13 +1,20 @@
 import styled from "styled-components";
-function Card() {
+
+interface PokeData {
+    key: number;
+    name: string;
+    url: string;
+  }
+
+function Card({key, name, url}: PokeData): JSX.Element {
     return   <>
     <CardSection>
-        <img src="/" id="pokemon-img"></img>
-        <h2 id="pokemon-name">파이리</h2>
+        <img src="/" id="pokemon-img" alt='pokemon'/>
+        <h2 id="pokemon-name">{name}</h2>
         <p>#0033</p>
-        <div style={{display:"flex", justifyContent:"space-between"}}>
-            <SkillBtn>불</SkillBtn>
-            <SkillBtn>물</SkillBtn>
+        <div style={{display:"flex", justifyContent:"space-between"}}>            
+            <SkillBtn>Fire</SkillBtn>
+            <SkillBtn>Water</SkillBtn>            
         </div>
     </CardSection>
     </>
@@ -23,6 +30,7 @@ const CardSection = styled.section`
   margin: 10px;
   box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.3);
   cursor: pointer;
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
   &:hover {
     transition: all 0.4s ease;
     transform: translateY(-3px)

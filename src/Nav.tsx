@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { BsSearch } from 'react-icons/bs';
+import logoImage from './assets/image/pokemon_logo.png';
 
 function Nav() {
     return   <MenuNav>   
-      <h1>Pokemon Dictionary</h1>   
+      <PokemonLogo/>
       <div>
-          <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
+          <div style={{width:"100%", display:"flex", alignItems:"center", justifyContent:"space-between"}}>
               <FilterArea>
                     <ul>
                         <li>가나다순</li>
@@ -36,13 +37,10 @@ function Nav() {
   text-align: center;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 3rem;
-  h1 {
-    font-size: 40px;
-    font-weight: 900;
-    margin: 3rem 0;    
-    background-color: bisque;
-  }  
+  width: 100%;
+  height: 100px;
   ul {
     display: flex;
     background-color: green;
@@ -55,6 +53,14 @@ function Nav() {
   }
 `;
 
+const PokemonLogo = styled.div`
+ background-image: url(${logoImage});
+ width: 300px;
+ height: 90px; 
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: cover;
+`;
 const InputArea = styled.section`
     background-color: aquamarine;
     display: flex;
@@ -72,7 +78,6 @@ const InputArea = styled.section`
     }
 `;
 const FilterArea = styled.section`
-    background-color: #a36eff;
     display: flex;
     align-items: center;
     ul {

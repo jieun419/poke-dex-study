@@ -1,22 +1,27 @@
 import { useQuery } from "react-query";
-
-function Call() {
-    const {isLoading, error, data} = useQuery({
-      queryKey: ['pokemonData'],
+import Card from "./Card";
+function Call(): JSX.Element {
+    const {isLoading, isError, data} = useQuery({
+      queryKey: ['pokemonsDataList'],
       queryFn: () => 
       fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0').then(
         (res) => res.json(),
       ),
     })
-    if(isLoading) return `로딩 중입니다...`
-    if (error) return `에러가 발생했습니다!!`
-    console.log(data)
-    //+ error.message
+    if(isLoading) return <span>잠깐! 로딩 중입니다...</span>
+    if (isError) return <span>에러가 발생했습니다!!</span>
+
+    console.log(data.results[0])
     return (
-      <div>
-        <p style={{color:"white", fontSize:"30px"}}>{data.results[0].name}</p>
+      <>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {data.results.map((poke: { id: number; name: string, url: string }) => (
+          <Card key={poke.id} name={poke.name} url={poke.url} />
+        ))}
       </div>
-    )
+      </>
+      
+    )  
   }
-  
+
   export default Call;

@@ -18,19 +18,19 @@ function Sidebar() {
   position: absolute;
   left: 0;
   z-index: 99;
-  background-color: #ff675c;
+  background-color: #fec20c;
   display: flex;
   flex-direction: column;
   p{
     font-size: 20px;
-    color: white;
+    color: #2d4596;
     margin: 15px 5px;
     font-weight: 600;
     cursor: pointer;
     text-align: center;
     transition: all 0.2s ease;
     &:hover {
-        background-color: #ff8f87;
+        background-color: #ffd864;
         border-radius: 20px;
         transition: all 0.2s ease;
     }
