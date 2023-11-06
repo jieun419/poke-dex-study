@@ -2,6 +2,9 @@ import { useQuery } from "react-query"
 import axios from "axios"
 import { useState } from "react"
 import styled from "styled-components"
+import { useDispatch, useSelector } from "react-redux"
+import { RootState } from "./store"
+import { themeActions } from "./store/theme-slice"
 
 interface PokeDataT {
   name: string,
@@ -12,6 +15,7 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 30px 0;
 `
 
 const PokeInfoContainer = styled.section`
@@ -23,12 +27,13 @@ const PokeInfoContainer = styled.section`
 `
 
 const PokeInfoBox = styled.div`
-  background-color: #fff;
-  border: 1px solid #dcdcdc;
+  background-color: var(--box-bg-color);
+  border: 1px solid var(--box-border);
   border-radius: 10px;
 `
 
 const PokeName = styled.p`
+  color: var(--text-color);
   font-size: 0.8rem;
   padding: 10px;
 `
@@ -36,17 +41,21 @@ const PokeName = styled.p`
 const PageNation = styled.div`
   display: flex;
   gap: 10px;
-  & > button {
-    background-color: #444;
-    border-radius: 10px;
-    padding: 10px 15px;
-    font-size: 1rem;
-    color: #fff;
-  }
+`
+
+const EventButton = styled.button`
+  background-color: var(--button-bg-color);
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: var(--button-text-color);
 `
 
 function App() {
-  const [pokeData, setPokeData] = useState<PokeDataT[]>([])
+  const dispatch = useDispatch();
+  const [pokeData, setPokeData] = useState<PokeDataT[]>([]);
+  const themeType = useSelector((state: RootState) => state.themeType.themeMode);
+
   const getPokeData = async () => {
     const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
     return res.data
@@ -63,10 +72,24 @@ function App() {
     },
   })
 
-  console.log(pokeData)
+
+  const onChangeTheme = (theme: string) => {
+    localStorage.setItem('THEME', theme)
+  }
+
+  const toggleTheme = () => {
+    if (themeType === 'dark') {
+      onChangeTheme('light');
+      dispatch(themeActions.lightMode());
+    } else {
+      onChangeTheme('dark');
+      dispatch(themeActions.darkMode());
+    }
+  }
 
   return (
     <Main>
+      <EventButton onClick={toggleTheme}>{themeType === 'dark' ? '🌞 Light' : '🌚 Dark'}</EventButton>
       <PokeInfoContainer>
         {
           pokeData.map((el) => (
@@ -79,8 +102,8 @@ function App() {
         }
       </PokeInfoContainer>
       <PageNation>
-        <button>prev</button>
-        <button>next</button>
+        <EventButton>prev</EventButton>
+        <EventButton>next</EventButton>
       </PageNation>
     </Main>
   )
