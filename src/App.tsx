@@ -55,9 +55,10 @@ function App() {
   const dispatch = useDispatch();
   const [pokeData, setPokeData] = useState<PokeDataT[]>([]);
   const themeType = useSelector((state: RootState) => state.themeType.themeMode);
+  const LIMIT = 20
 
   const getPokeData = async () => {
-    const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
+    const res = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${LIMIT}&offset=0`)
     return res.data
   }
 
@@ -72,12 +73,11 @@ function App() {
     },
   })
 
-
   const onChangeTheme = (theme: string) => {
     localStorage.setItem('THEME', theme)
   }
 
-  const toggleTheme = () => {
+  const handleToggleTheme = () => {
     if (themeType === 'dark') {
       onChangeTheme('light');
       dispatch(themeActions.lightMode());
@@ -89,7 +89,7 @@ function App() {
 
   return (
     <Main>
-      <EventButton onClick={toggleTheme}>{themeType === 'dark' ? '🌞 Light' : '🌚 Dark'}</EventButton>
+      <EventButton onClick={handleToggleTheme}>{themeType === 'dark' ? '🌞 Light' : '🌚 Dark'}</EventButton>
       <PokeInfoContainer>
         {
           pokeData.map((el) => (
