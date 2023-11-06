@@ -1,15 +1,17 @@
 import styled from "styled-components";
 
 interface PokeData {
+    poketId: number;
     key: number;
     name: string;
     url: string;
   }
 
-function Card({key, name, url}: PokeData): JSX.Element {
+function Card({poketId, name, key, url}: PokeData): JSX.Element {
+    //왜 포켓몬 image주소가 없을까요?...일단 다른 사이트에서 랜덤 이미지로 넣어보긴 했는데...
     return   <>    
     <CardSection>
-        <img src="/" id="pokemon-img" alt='pokemon'/>
+        //<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${poketId}.png`} alt='pokemon-img'/>
         <h2 id="pokemon-name">{name}</h2>
         <p>#0033</p>
         <div style={{display:"flex", justifyContent:"space-between"}}>            
@@ -36,8 +38,8 @@ const CardSection = styled.section`
     transform: translateY(-3px)
   }  
   img {
-    width: 100px;
-    height: 130px;
+    width: 100%;
+    height: 65%;
     border: 1px solid black;
     border-radius: 5px;
   }
