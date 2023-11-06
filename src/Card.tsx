@@ -7,7 +7,7 @@ interface PokeData {
   }
 
 function Card({key, name, url}: PokeData): JSX.Element {
-    return   <>
+    return   <>    
     <CardSection>
         <img src="/" id="pokemon-img" alt='pokemon'/>
         <h2 id="pokemon-name">{name}</h2>
@@ -22,7 +22,7 @@ function Card({key, name, url}: PokeData): JSX.Element {
   export default Card;
 
 const CardSection = styled.section`
-  background-color: #ccc;
+  background-color: #f3f4f2;
   border-radius: 5px;
   width: 250px;
   height: 300px;
@@ -36,7 +36,7 @@ const CardSection = styled.section`
     transform: translateY(-3px)
   }  
   img {
-    width: 100%;
+    width: 100px;
     height: 130px;
     border: 1px solid black;
     border-radius: 5px;

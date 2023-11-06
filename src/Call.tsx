@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import Card from "./Card";
+
 function Call(): JSX.Element {
     const {isLoading, isError, data} = useQuery({
       queryKey: ['pokemonsDataList'],
@@ -10,17 +11,15 @@ function Call(): JSX.Element {
     })
     if(isLoading) return <span>잠깐! 로딩 중입니다...</span>
     if (isError) return <span>에러가 발생했습니다!!</span>
-
-    console.log(data.results[0])
+    console.log(data.results)
     return (
       <>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {data.results.map((poke: { id: number; name: string, url: string }) => (
-          <Card key={poke.id} name={poke.name} url={poke.url} />
+        {data.results.map((poke: { name: string, url: string }, index: number) => (
+          <Card cardKey={index} name={poke.name} url={poke.url} />
         ))}
-      </div>
-      </>
-      
+      </div>     
+      </>      
     )  
   }
 

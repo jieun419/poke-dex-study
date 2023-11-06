@@ -9,7 +9,7 @@ function Nav() {
       <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
           <div style={{width: "100%",display:"flex", alignItems:"center", justifyContent:"space-between"}}>
               <InputArea>
-                <input type="text" id="search-box" placeholder="You can search here." ></input>
+                <input type="text" id="search-box" placeholder="Search some Awesome Pokemon!" ></input>
                 <BsSearch style={{fontSize:"30px", color:"#4185c2", cursor:"pointer"}}/>
               </InputArea>
               <FilterArea>
@@ -19,11 +19,10 @@ function Nav() {
                         <li>Random</li>
                     </ul>                    
               </FilterArea>
-              <SelectNumber>
-                <option value="10">show 10</option>
-                <option value="20">show 20</option>
-                <option value="30">show 30</option>
-              </SelectNumber>
+              <SelectLanguage>
+                <option value="eng">ENG</option>
+                <option value="kor">KOR</option>
+              </SelectLanguage>
               <ThemeBtn><FiMoon style={{fontSize:"30px"}}/></ThemeBtn>
           </div>
       </div>
@@ -67,13 +66,13 @@ const ThemeBtn = styled.button`
   }
 `;
 
-const SelectNumber = styled.select`
+const SelectLanguage = styled.select`
   width: 130px;
   height: 40px;
   font-size: 17px;
   text-align: center;
   border-radius: 5px;
-  color: #111;
+  color: #555;
   cursor: pointer;
   border: 3px solid #4185c2 ;
   font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;   
