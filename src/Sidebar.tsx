@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { FaHome } from 'react-icons/fa';
 import { FaRegStar } from 'react-icons/fa';
 import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi';
+
 function Sidebar() {
     return (<SidebarSection>
         <p><FaHome style={{fontSize:"35px"}}/></p>
