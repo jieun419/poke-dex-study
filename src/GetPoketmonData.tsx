@@ -1,17 +1,18 @@
 import { useQuery } from "react-query";
 import Card from "./Card";
 
-function CallDatas(): JSX.Element {
-  //향후 
+function GetPoketmonData(): JSX.Element {
+  //향후 fetch부분과 Card 컴포넌트 분리 필요해보임?
+    const getPoketmonApi = () => 
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=12&offset=0').then(
+      (res) => res.json(),
+    )
     const {isLoading, isError, data} = useQuery({
       queryKey: ['pokemonsDataList'],
-      queryFn: () => 
-      fetch('https://pokeapi.co/api/v2/pokemon?limit=12&offset=0').then(
-        (res) => res.json(),
-      ),
+      queryFn: getPoketmonApi,
     })
     if(isLoading) return <span>Loading...</span>
-    if (isError) return <span>Error!</span>
+    if (isError) return <span>Error! 데이터를 받아오는데 문제가 발생했습니다.</span>
     return (
       <>
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent:"space-between"}}>
@@ -23,4 +24,4 @@ function CallDatas(): JSX.Element {
     )  
   }
 
-  export default CallDatas;
+  export default GetPoketmonData;

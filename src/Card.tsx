@@ -37,8 +37,13 @@ const CardSection = styled.section`
   font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
   &:hover {
     transition: all 0.4s ease;
-    transform: translateY(-3px)
+    transform: translateY(-6px);    
   }  
+  &:active {
+    transition: all 0.5s ease;
+    transform: translateY(-6px); 
+    transform:rotate3d(0, 1, 0, 180deg) ;
+    }
   img {
     width: 100%;
     height: 65%;

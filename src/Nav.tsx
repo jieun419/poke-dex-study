@@ -64,6 +64,9 @@ const ThemeBtn = styled.button`
     transition: all 0.2s ease;
     color: #fff;
   }
+  &:active{
+    background-color: #2c587e;
+  }
 `;
 
 const SelectLanguage = styled.select`

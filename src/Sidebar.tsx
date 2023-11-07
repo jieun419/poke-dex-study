@@ -34,5 +34,8 @@ function Sidebar() {
         border-radius: 20px;
         transition: all 0.2s ease;
     }
+    &:active {
+        background-color: #ecb205;
+    }
   }  
 `;
