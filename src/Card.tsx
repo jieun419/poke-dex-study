@@ -1,12 +1,11 @@
 import styled from "styled-components";
 interface PokeData {
     poketId: number;
-    key: number;
     name: string;
     url: string;
   }
 
-function Card({poketId, name, key, url}: PokeData): JSX.Element {
+function Card({poketId, name, url}: PokeData): JSX.Element {
     //key를 어떻게 처리할 것인지에 대한 고민이 많음.....
     //key를 그대로 쓰지 못하는 이유: react에서 이미 key를 다른 용도로 쓰고 있어서 써봤자 안나타남
     return   <>    
