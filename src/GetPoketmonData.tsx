@@ -7,7 +7,6 @@ function GetPoketmonData(): JSX.Element {
     const [pokeNum, setPokeNum] = useState(0);
     const [showPoke, setShowPoke] = useState(12);
     //page값은 수식으로 따로 계산을 해줘야 하나?
-
     const nextPoke = () =>{
       console.log('다음포켓몬')
       const nextPokeList = pokeNum + showPoke;
@@ -29,7 +28,7 @@ function GetPoketmonData(): JSX.Element {
     if(isError) return <span>Error! 데이터를 받아오는데 문제가 발생했습니다.</span>
     return (
       <>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent:"space-between"}}>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent:"space-between"}} onClick={onClick}>
         {data.results.map((poke: { name: string, url: string }, index: number) => (
           <Card poketId={index} key={index} name={poke.name} url={poke.url} />          
         ))}
