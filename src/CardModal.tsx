@@ -8,9 +8,10 @@ function CardModal(): JSX.Element {
     <CardContainer>
         <Overlay onClick={() => dispatch(closeModal()) }/>
         <ContentSection>
+          <QuitBtn onClick={() => dispatch(closeModal()) }>x</QuitBtn>
           <img src="/"></img>
-          <h3>모달 창입니다</h3>
-          <p>여기에 포켓몬의 디테일이 붙어야 해요.</p>
+          <h3>here pokemon name.</h3>
+          <p>here pokemon detail.</p>
         </ContentSection>
     </CardContainer>
     </>
@@ -34,14 +35,15 @@ const Overlay = styled.div`
 `;
 const ContentSection = styled.section`
   position: fixed;
-  width: 60rem;
-  height: 50rem;
+  width: 50%;
+  height: 80%;
   background: #fff;
   padding: 5rem;
   border-radius: 30px;
   img {
     width: 100%;
     height: 30%;
+    margin-top: 4rem;
   }
   h3 {
     font-size: 27px;
@@ -51,4 +53,24 @@ const ContentSection = styled.section`
       font-size: 16px;
       margin-top: 2rem;
     }
+`;
+
+const QuitBtn = styled.button`
+position: absolute;
+top: 2rem;
+right: 2rem;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+background-color: #4185c2;
+color: #fff;
+font-size: 30px;
+transition: all 0.2s ease;
+&:hover {
+  background-color: #84aed3;
+  transition: all 0.2s ease;
+}
+&:active{
+    background-color: #4185c2;
+  }
 `;
