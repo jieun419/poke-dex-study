@@ -1,19 +1,17 @@
 import styled from "styled-components";
-
 interface PokeData {
-    poketId: number;
     name: string;
     url: string;
     onClick: () => void;
   }
 
-function Card({poketId, name, url, onClick}: PokeData): JSX.Element {
+function Card({name, url, onClick}: PokeData): JSX.Element {
     return   <>    
     <CardSection onClick={onClick}>
-        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${poketId+1}.png`} alt='pokemon-img'/>
+        <img src={`./`} alt='pokemon-img'/>
         {/*https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/2.gif 이쪽도 참고*/}
         <h2 id="pokemon-name">{name}</h2>
-        <p>#{poketId}</p>
+        <p>{url}</p>
         <div style={{display:"flex", justifyContent:"space-between"}}>            
             <SkillBtn>Fire</SkillBtn>
             <SkillBtn>Water</SkillBtn>            
@@ -55,7 +53,7 @@ const CardSection = styled.section`
     text-align: center;
   }
    p {
-    font-size: 16px;
+    font-size: 11px;
     font-weight: 500;
     text-align: center;
     color: #535353;

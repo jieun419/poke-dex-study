@@ -11,11 +11,11 @@ import CardModal from "./CardModal";
   function CardList({ data }: CardListProps): JSX.Element {
     const {isOpen} = useSelector((store: RootState)=> store.modal);
     const dispatch = useDispatch();
+    
     return (
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
         {data.results.map((poke: { name: string, url: string }, index: number) => (
           <Card
-            poketId={index}
             key={index}
             name={poke.name}
             url={poke.url}

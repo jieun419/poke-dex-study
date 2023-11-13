@@ -1,4 +1,4 @@
-import GetPoketmonData from "./GetPoketmonData";
+import ShowPoketmonData from "./ShowPoketmonData";
 import Nav from "./Nav"
 import styled from "styled-components";
 import { QueryClient, QueryClientProvider} from "react-query";
@@ -12,7 +12,7 @@ function App() {
     <Nav/>
     <Sidebar/>
     <CardListSection >
-      <GetPoketmonData/>
+      <ShowPoketmonData/>
     </CardListSection>    
   </section>
   </QueryClientProvider>
