@@ -1,9 +1,12 @@
 import styled from "styled-components";
+import { closeModal } from "./store/modalSlice";
+import { useDispatch } from "react-redux";
 
 function CardModal(): JSX.Element {
+  const dispatch = useDispatch();
     return   <>    
     <CardContainer>
-        <Overlay/>
+        <Overlay onClick={() => dispatch(closeModal()) }/>
         <ContentSection>
           <img src="/"></img>
           <h3>모달 창입니다</h3>

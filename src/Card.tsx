@@ -1,13 +1,15 @@
 import styled from "styled-components";
+
 interface PokeData {
     poketId: number;
     name: string;
     url: string;
+    onClick: () => void;
   }
 
-function Card({poketId, name, url}: PokeData): JSX.Element {
+function Card({poketId, name, url, onClick}: PokeData): JSX.Element {
     return   <>    
-    <CardSection>
+    <CardSection onClick={onClick}>
         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${poketId+1}.png`} alt='pokemon-img'/>
         {/*https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/2.gif 이쪽도 참고*/}
         <h2 id="pokemon-name">{name}</h2>
