@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import modalReducer from "./modalSlice";
-//대체 얘는 어디서?
+//modalSlice에서  Reducer부분을 export했으니까 이렇게 받아오는 게 맞음.
 
-export default configureStore({
+const store = configureStore({
   reducer: {
     modal: modalReducer
   },
-})
+});
+
+export type RootState = ReturnType<typeof store.getState>; //state의 기본 타입?
+
+export default store;

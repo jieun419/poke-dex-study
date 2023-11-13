@@ -28,7 +28,7 @@ function GetPoketmonData(): JSX.Element {
     if(isError) return <span>Error! 데이터를 받아오는데 문제가 발생했습니다.</span>
     return (
       <>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent:"space-between"}} onClick={onClick}>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent:"space-between"}}>
         {data.results.map((poke: { name: string, url: string }, index: number) => (
           <Card poketId={index} key={index} name={poke.name} url={poke.url} />          
         ))}

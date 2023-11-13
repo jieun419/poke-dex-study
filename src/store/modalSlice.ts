@@ -1,17 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    modalType: "",
-    isOpen: false,
+    isOpen: false
 };
 
 export const modalSlice = createSlice({
   name: "modal", //slice 의 이름
   initialState,
   reducers: {
-    openModal : (state, actions) => {
-        const { modalType } = actions.payload;
-        state.modalType = modalType;
+    openModal : (state) => {
         state.isOpen = true;
     },
     closeModal: (state) => {
@@ -20,6 +17,9 @@ export const modalSlice = createSlice({
   }, 
 });
 export const { openModal, closeModal } = modalSlice.actions; 
-export const selectModal = (state) => state.modal;
-//reducer함수를 export해서 밖에서도 쓸 수 있다
-export default modalSlice.reducer;
+//action Creator을 export햇음.
+
+//export const selectModal = (state:RootState) => state.modal;
+//reducer함수를 export해서 밖에서도 쓸 수 있다고 한다. 
+//해당 slice로 정의된 전역 상태를 가져올 수 있는 함수라고 하는데...
+export default modalSlice.reducer; //slice의 reducer부분을 export함 
