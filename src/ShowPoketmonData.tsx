@@ -34,9 +34,10 @@ function ShowPoketmonData(): JSX.Element {
     const {isLoading, isError, data, refetch} = useQuery({
       queryKey: ['pokemonsDataList'],
       queryFn: ()=> getPoketmonDataApi(apiUrl),
-      staleTime: 1000,
-      cacheTime: 10000,
+      staleTime: 100,
+      cacheTime: 5000,
       //캐시타임이랑 바로 데이터 반영 안 되는 게 연관이 있는 것 같은데...
+      refetchOnWindowFocus: false,
     })
     if(isLoading) return <span>Loading...</span>
     if(isError) return <span>Error! 데이터를 받아오는데 문제가 발생했습니다.</span>
