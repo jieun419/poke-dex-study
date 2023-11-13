@@ -8,32 +8,47 @@ import styled from "styled-components";
 
 function ShowPoketmonData(): JSX.Element {
     const [pokeNum, setPokeNum] = useState(0);
-    const showPoke = 10;
-    const [apiUrl, setApiUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=${showPoke}&offset=0`);
+    const [showCard, setShowCard] = useState(12);
+    const [apiUrl, setApiUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=${showCard}&offset=0`);
     console.log(`이거: ${apiUrl}`)
 
-    const nextPageUrl = () =>{
-      const nextPokeList = pokeNum + showPoke;
-      setPokeNum(nextPokeList);
-      setApiUrl(`https://pokeapi.co/api/v2/pokemon?limit=${showPoke}&offset=${nextPokeList}`)
+    const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+      const selectedValue = parseInt(event.target.value, 10);
+      setShowCard(selectedValue)
+      setPokeNum(0);
+      setApiUrl(`https://pokeapi.co/api/v2/pokemon?limit=${selectedValue}&offset=0`)
     }
+
+    const nextPageUrl = () =>{
+      const nextPokeList = pokeNum + showCard;
+      setPokeNum(nextPokeList);
+      setApiUrl(`https://pokeapi.co/api/v2/pokemon?limit=${showCard}&offset=${nextPokeList}`)
+    }
+
     const beforePageUrl = () =>{
-      const beforePokeList = pokeNum - showPoke;
-      setPokeNum(beforePokeList);
-      setApiUrl(`https://pokeapi.co/api/v2/pokemon?limit=${showPoke}&offset=${beforePokeList}`)
+      const beforePokeList = pokeNum - showCard;
+      setPokeNum(beforePokeList>=0?beforePokeList:0);
+      setApiUrl(`https://pokeapi.co/api/v2/pokemon?limit=${showCard}&offset=${beforePokeList}`)
     }
 
     const {isLoading, isError, data, refetch} = useQuery({
       queryKey: ['pokemonsDataList'],
-      queryFn: ()=> getPoketmonDataApi(apiUrl)
+      queryFn: ()=> getPoketmonDataApi(apiUrl),
+      staleTime: 1000,
+      cacheTime: 10000,
+      //캐시타임이랑 바로 데이터 반영 안 되는 게 연관이 있는 것 같은데...
     })
-
     if(isLoading) return <span>Loading...</span>
     if(isError) return <span>Error! 데이터를 받아오는데 문제가 발생했습니다.</span>
     console.log(data)
 
     return (
       <>
+        <SelectCardNum value={showCard} onChange={handleSelectChange}>
+                <option value="6">6</option>
+                <option value="12">12</option>
+                <option value="18">18</option>
+        </SelectCardNum>
         <PageBtn onClick={() => { beforePageUrl(); refetch()}}><BiLeftArrow/></PageBtn>
         <CardList data={data} ></CardList>
         <PageBtn onClick={() => { nextPageUrl(); refetch()}}><BiRightArrow/></PageBtn>
@@ -58,4 +73,19 @@ function ShowPoketmonData(): JSX.Element {
     background-color: #86beff;
     transition: all 0.3s ease;
   }
+`;
+
+const SelectCardNum = styled.select`
+  position: absolute;
+  top: 120px;
+  right: 120px;
+  width: 130px;
+  height: 25px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+  color: #555;
+  cursor: pointer;
+  border: 3px solid #a9d5fb ;
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;   
 `;
