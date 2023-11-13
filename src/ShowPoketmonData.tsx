@@ -45,10 +45,17 @@ function ShowPoketmonData(): JSX.Element {
 
 
   const PageBtn = styled.button`
-  height: 300px;
+  width: 100px;
+  border-radius: 10px;
+  height: 80px;
+  align-items: center;
   color: #fff;
   font-size: 30px;
+  margin-top: 300px;
   cursor: pointer;
-  align-items: center;
-  margin-top: 200px;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #86beff;
+    transition: all 0.3s ease;
+  }
 `;
