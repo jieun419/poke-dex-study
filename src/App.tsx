@@ -6,11 +6,11 @@ import Sidebar from "./Sidebar";
 import CardModal from "./CardModal";
 import { useDispatch, useSelector } from "react-redux";
 import { openModal, closeModal } from "./store/modalSlice";
+import { RootState } from "./store/store";
 
 const queryClient = new QueryClient();
-
 function App() {
-  const {isOpen} = useSelector((store)=> store.modal);
+  const {isOpen} = useSelector((store: RootState)=> store.modal);
   const dispatch = useDispatch();
   return <QueryClientProvider client={queryClient}>
   <section id="home-section" style={{height:"100%", position:"relative", backgroundColor:"red"}} onClick={()=>{

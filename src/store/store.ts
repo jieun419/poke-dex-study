@@ -8,6 +8,6 @@ const store = configureStore({
   },
 });
 
-export type RootState = ReturnType<typeof store.getState>; //state의 기본 타입?
-
+//export type RootState = ReturnType<typeof store.getState>; //state의 기본 타입?
+export type RootState = ReturnType<typeof store.getState>;
 export default store;
