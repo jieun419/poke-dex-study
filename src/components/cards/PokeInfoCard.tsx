@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { getPokeDetailData } from "../../api/pokeDetailData";
 import { useQuery } from "react-query";
-import { useState } from "react";
 
 const PokeInfoBox = styled.div`
   background-color: var(--box-bg-color);
