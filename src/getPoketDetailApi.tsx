@@ -1,15 +1,5 @@
-interface getPoketDetailProps {
-    url : string;
-}
-
-
-function getPoketDetailApi({ url }: getPoketDetailProps): JSX.Element {
-    
+  export function getPoketDetailApi(detailUrl: string) {
+    return fetch(`${detailUrl}`)
+      .then((res: Response) => res.json());
   }
-
-export default getPoketDetailApi;
-
-export const getPoketmonDetail = (showPoke: number, pokeNum: number) => 
-  fetch(`https://pokeapi.co/api/v2/pokemon?limit=${showPoke}&offset=${pokeNum}`).then(
-    (res) => res.json(),
-  );
+  
