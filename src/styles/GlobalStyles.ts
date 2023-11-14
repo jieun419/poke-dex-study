@@ -3,6 +3,15 @@ import reset from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`
     ${reset}
+    :root {
+        --bg-color: ${({ theme }) => theme.bgColor};
+        --text-color: ${({ theme }) => theme.textColor};
+        --button-bg-color: ${({ theme }) => theme.buttonBgColor};
+        --button-text-color: ${({ theme }) => theme.buttonTextColor};
+        --box-bg-color: ${({ theme }) => theme.boxColor};
+        --box-border: ${({ theme }) => theme.boxBorder};
+    }
+
     // 적용시킬 css 입력
     a{
         text-decoration: none;
@@ -18,12 +27,14 @@ const GlobalStyles = createGlobalStyle`
         border: 0;
         font-size: 10px;
         vertical-align: baseline;
+        font-size: 16px;
     }
     body{
         line-height: 1;
         font-family: 'Noto Sans KR', sans-serif;
         background-color: #F6F9F0;
         margin-bottom: 100px;
+        background-color: var(--bg-color);
     }
     ol, ul{
         list-style: none;
