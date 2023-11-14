@@ -22,8 +22,9 @@ const GlobalStyles = createGlobalStyle`
     body{
         line-height: 1;
         font-family: 'Noto Sans KR', sans-serif;
-        background-color: #F6F9F0;
+        background-color: #ccc;
         margin-bottom: 100px;
+        background-color: #464646;
     }
     ol, ul{
         list-style: none;
