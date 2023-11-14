@@ -5,12 +5,13 @@ import { getPoketmonDataApi } from "./getPoketDataApi";
 import { BiLeftArrow } from 'react-icons/bi';
 import { BiRightArrow } from 'react-icons/bi';
 import styled from "styled-components";
+import getPoketDetailApi from "./getPoketDetailApi";
 
 function ShowPoketmonData(): JSX.Element {
     const [pokeNum, setPokeNum] = useState(0);
     const [showCard, setShowCard] = useState(12);
     const [apiUrl, setApiUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=${showCard}&offset=0`);
-    console.log(`이거: ${apiUrl}`)
+    console.log(`포켓몬리스트: ${apiUrl}`)
 
     const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
       const selectedValue = parseInt(event.target.value, 10);
@@ -39,9 +40,16 @@ function ShowPoketmonData(): JSX.Element {
       //캐시타임이랑 바로 데이터 반영 안 되는 게 연관이 있는 것 같은데...
       refetchOnWindowFocus: false,
     })
-    if(isLoading) return <span>Loading...</span>
-    if(isError) return <span>Error! 데이터를 받아오는데 문제가 발생했습니다.</span>
-    console.log(data)
+
+    const { isLoading: detailLoading, isError: detailError, data: pokemonDetailData } = useQuery({
+      queryKey: ['pokemonsDetailList'],  // Include the selected Pokémon's name in the query key
+      queryFn: () => getPoketDetailApi(`https://pokeapi.co/api/v2/pokemon/1/`)
+    });
+    console.log(pokemonDetailData.id)
+    console.log(pokemonDetailData.sprites.front_default)
+
+    if (isLoading || detailLoading) return <span>Loading...</span>
+    if (isError || detailError) return <span>Error! 데이터를 받아오는데 문제가 발생했습니다.</span>
 
     return (
       <>
