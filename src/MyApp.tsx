@@ -10,7 +10,7 @@ const MyApp = () => {
   const themeType = useSelector((state: RootState) => state.themeType.themeMode);
 
   return (
-    <ThemeProvider theme={themeType === 'dark' ? light : dark}>
+    <ThemeProvider theme={themeType === 'dark' ? dark : light}>
       <GlobalStyle />
       <App />
     </ThemeProvider>

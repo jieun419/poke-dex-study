@@ -23,7 +23,7 @@ const ToggleThemeButton = () => {
 
   return (
     <EventButton onClick={handleToggleTheme}>
-      {themeType === 'dark' ? '🌞 Light' : '🌚 Dark'}
+      {themeType === 'dark' ? '🌚 Dark' : '🌞 Light'}
     </EventButton>
   );
 };
