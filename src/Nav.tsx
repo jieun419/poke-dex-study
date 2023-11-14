@@ -2,8 +2,11 @@ import styled from "styled-components";
 import { BsSearch } from 'react-icons/bs';
 import {FiMoon} from 'react-icons/fi'
 import logoImage from './assets/image/pokemon_logo.png';
+import { useDispatch } from "react-redux";
+import { toggleTheme } from "./store/themeSlice";
 
 function Nav() {
+  const dispatch = useDispatch();
     return   <MenuNav>   
       <PokemonLogo/>
       <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
@@ -23,7 +26,7 @@ function Nav() {
                 <option value="eng">ENG</option>
                 <option value="kor">KOR</option>
               </SelectLanguage>
-              <ThemeBtn><FiMoon style={{fontSize:"30px"}}/></ThemeBtn>
+              <ThemeBtn onClick={() => dispatch(toggleTheme()) }><FiMoon style={{fontSize:"30px"}}/></ThemeBtn>
           </div>
       </div>
     </MenuNav>

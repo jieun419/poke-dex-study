@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import modalReducer from "./modalSlice";
 //modalSlice에서  Reducer부분을 export했으니까 이렇게 받아오는 게 맞음.
+import themeReducer from "./themeSlice"
 
 const store = configureStore({
   reducer: {
-    modal: modalReducer
+    modal: modalReducer,
+    theme: themeReducer,
   },
 });
 

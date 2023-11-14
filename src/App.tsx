@@ -1,13 +1,18 @@
 import ShowPoketmonData from "./ShowPoketmonData";
 import Nav from "./Nav"
-import styled from "styled-components";
+import styled, {ThemeProvider} from "styled-components";
 import { QueryClient, QueryClientProvider} from "react-query";
 import Sidebar from "./Sidebar";
+import { useSelector } from "react-redux";
+import { RootState } from "./store/store";
+import {dark, light} from "./styles/theme"
 
 const queryClient = new QueryClient();
 
 function App() {
+  const theme = useSelector((state: RootState) => state.theme.theme);
   return <QueryClientProvider client={queryClient}>
+    <ThemeProvider theme={theme ==='dark' ? dark : light}>
   <section id="home-section" style={{height:"100%", position:"relative", backgroundColor:"red"}}>    
     <Nav/>
     <Sidebar/>
@@ -15,6 +20,7 @@ function App() {
       <ShowPoketmonData/>
     </CardListSection>    
   </section>
+  </ThemeProvider>
   </QueryClientProvider>
 }
 export default App;

@@ -45,8 +45,8 @@ function ShowPoketmonData(): JSX.Element {
       queryKey: ['pokemonsDetailList'],  // Include the selected Pokémon's name in the query key
       queryFn: () => getPoketDetailApi(`https://pokeapi.co/api/v2/pokemon/1/`)
     });
-    console.log(pokemonDetailData.id)
-    console.log(pokemonDetailData.sprites.front_default)
+    // console.log(pokemonDetailData.id)
+    // console.log(pokemonDetailData.sprites.front_default)
 
     if (isLoading || detailLoading) return <span>Loading...</span>
     if (isError || detailError) return <span>Error! 데이터를 받아오는데 문제가 발생했습니다.</span>
